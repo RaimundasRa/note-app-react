@@ -5,7 +5,7 @@ import Search from "./components/Search";
 import Header from "./components/Header";
 
 const App = () => {
-  const [notes, setNotes] = useState([
+  const [notes, setNotes] = useState(getNotes, [
     {
       id: nanoid(),
       text: "This is the note text 1",
@@ -27,15 +27,23 @@ const App = () => {
 
   const [darkMode, setDarkMode] = useState(false);
 
+  // retrieving from local storage
+  // this works tho
+  function getNotes() {
+    const savedNotes = localStorage.getItem("react-notes-app-data");
+    return savedNotes ? JSON.parse(savedNotes) : notes;
+  }
+
   //doesn't save to local storage for some reason
-  useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
+  // useEffect(() => {
+  //   const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
 
-    if (savedNotes) {
-      setNotes(savedNotes);
-    }
-  }, []);
+  //   if (savedNotes) {
+  //     setNotes(savedNotes);
+  //   }
+  // }, []);
 
+  //saving to local storage
   useEffect(() => {
     localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
   }, [notes]);
