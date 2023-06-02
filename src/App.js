@@ -37,23 +37,13 @@ const App = () => {
     const getTheme = localStorage.getItem("set-dark-mode");
     return getTheme ? JSON.parse(getTheme) : darkMode;
   }
-  // retrieving from local storage
-  // this works tho
+  // retrieving notes from local storage
   function getNotes() {
     const savedNotes = localStorage.getItem("react-notes-app-data");
     return savedNotes ? JSON.parse(savedNotes) : notes;
   }
 
-  //doesn't save to local storage for some reason
-  // useEffect(() => {
-  //   const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
-
-  //   if (savedNotes) {
-  //     setNotes(savedNotes);
-  //   }
-  // }, []);
-
-  //saving to local storage
+  //saving notes to local storage
   useEffect(() => {
     localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
   }, [notes]);

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #dcd3d3;
 }
 
 code {
@@ -19,7 +20,7 @@ code {
 }
 
 .dark-mode {
-  background-color: black;
+  background-color: rgb(62, 57, 57);
 }
 
 .dark-mode h1 {
