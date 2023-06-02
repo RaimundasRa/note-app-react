@@ -25,8 +25,18 @@ const App = () => {
 
   const [searchText, setSearchText] = useState("");
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(getTheme);
 
+  // saving theme settings
+  useEffect(() => {
+    localStorage.setItem("set-dark-mode", JSON.stringify(darkMode));
+  }, [darkMode]);
+
+  // retrieving theme settings
+  function getTheme() {
+    const getTheme = localStorage.getItem("set-dark-mode");
+    return getTheme ? JSON.parse(getTheme) : darkMode;
+  }
   // retrieving from local storage
   // this works tho
   function getNotes() {
